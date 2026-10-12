@@ -80,6 +80,59 @@
     lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
   }
 
+  /* ---- Knowledge check ----
+     Questions live in the page as <script type="application/json" id="quiz-data">
+     [{ "q": question, "a": [options], "c": index of correct option, "why": explanation }] */
+  var quizForm = document.getElementById("quiz-form");
+  var quizData = document.getElementById("quiz-data");
+  if (quizForm && quizData) {
+    var QUESTIONS = JSON.parse(quizData.textContent);
+    var scoreEl = document.getElementById("quiz-score");
+    var answered = {};
+    var renderQuiz = function () {
+      answered = {};
+      quizForm.innerHTML = QUESTIONS.map(function (item, qi) {
+        return '<fieldset class="q" id="q' + qi + '"><legend><span>Q' + (qi + 1) + '</span>' + item.q + '</legend><div class="opts">' +
+          item.a.map(function (opt, oi) {
+            var id = "q" + qi + "o" + oi;
+            return '<label class="opt" for="' + id + '"><input type="radio" id="' + id + '" name="q' + qi + '" value="' + oi + '"><span>' + opt + '</span></label>';
+          }).join("") +
+          '</div><p class="q__fb" hidden></p></fieldset>';
+      }).join("");
+      updateScore();
+    };
+    var updateScore = function () {
+      var keys = Object.keys(answered);
+      var right = keys.filter(function (k) { return answered[k]; }).length;
+      scoreEl.textContent = keys.length ? right + " / " + QUESTIONS.length + " correct" : "0 / " + QUESTIONS.length + " answered";
+    };
+    quizForm.addEventListener("submit", function (e) { e.preventDefault(); });
+    quizForm.addEventListener("change", function (e) {
+      var input = e.target;
+      if (input.type !== "radio") return;
+      var qi = parseInt(input.name.slice(1), 10);
+      if (qi in answered) return; // first answer counts
+      var item = QUESTIONS[qi];
+      var pick = parseInt(input.value, 10);
+      var ok = pick === item.c;
+      answered[qi] = ok;
+      var fs = document.getElementById("q" + qi);
+      fs.querySelectorAll("input").forEach(function (r) {
+        r.disabled = true;
+        var v = parseInt(r.value, 10);
+        if (v === item.c) r.parentElement.classList.add("is-right");
+        else if (v === pick) r.parentElement.classList.add("is-wrong");
+      });
+      var fb = fs.querySelector(".q__fb");
+      fb.className = "q__fb " + (ok ? "is-right" : "is-wrong");
+      fb.innerHTML = "<b>" + (ok ? "Correct." : "Not quite.") + "</b> " + item.why;
+      fb.hidden = false;
+      updateScore();
+    });
+    document.getElementById("quiz-reset").addEventListener("click", renderQuiz);
+    renderQuiz();
+  }
+
   /* ---- Tabs (WAI-ARIA pattern) ---- */
   document.querySelectorAll("[role='tablist']").forEach(function (list) {
     var tabs = Array.prototype.slice.call(list.querySelectorAll("[role='tab']"));

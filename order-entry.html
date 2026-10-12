@@ -206,10 +206,10 @@
       </form>
 
       <h3>Missing our item #?</h3>
-      <p class="text">If the customer doesn't list Aamstrand's item #, you'll need to find our part # before entering the order (see <em>How to check prices</em> and <em>How to check items</em>; guides coming soon).</p>
+      <p class="text">If the customer doesn't list Aamstrand's item #, you'll need to find our part # before entering the order. Use their price list (<a href="check-pricing.html#method-1">How to Check Pricing, method 1</a>) if they have one, or search our Item List by description (<a href="check-pricing.html#method-3">method 3</a>).</p>
 
       <h3>Who checks the prices?</h3>
-      <p class="text">Each customer has their own pricing, so verify prices before entering. Who does that depends on the account's rep number.</p>
+      <p class="text">Each customer has their own pricing, so verify prices before entering. Who does that depends on the account's rep number. See <a href="check-pricing.html">How to Check Pricing</a> for the three ways to look a price up.</p>
       <div class="pair">
         <div>
           <h4>House accounts <span class="reps"><span class="rep">16</span><span class="rep">19</span><span class="rep">20</span></span></h4>
@@ -616,11 +616,98 @@
         <p class="section__intro">Pick an answer to see if you're right. Nothing is recorded.</p>
       </div>
       <form class="quiz" id="quiz-form" autocomplete="off"></form>
+      <script type="application/json" id="quiz-data">
+[
+  {
+    "q": "A McMaster-Carr PO asks for 2,400 FT of item 42250 (50' spools) at $.114 per FT. What goes on the Sales Order?",
+    "a": [
+      "Ordered 2,400, Rate $0.114",
+      "Ordered 48, Rate $5.70",
+      "Ordered 48, Rate $0.114",
+      "Ordered 1, Rate $273.60"
+    ],
+    "c": 1,
+    "why": "Always enter spools and price per spool: 2,400 ÷ 50 = 48 spools, and $.114 × 50 = $5.70."
+  },
+  {
+    "q": "A regular customer's order comes to $150. What do you add?",
+    "a": [
+      "Nothing",
+      "A CRECAR line",
+      "A MINORD line ($25)",
+      "Write EC on the PO"
+    ],
+    "c": 2,
+    "why": "The standard minimum is $200, so the order gets the $25 MINORD fee."
+  },
+  {
+    "q": "A Fastenal order comes to $75. Does it need MINORD?",
+    "a": [
+      "Yes, it's under $200",
+      "No, Fastenal's minimum is $50"
+    ],
+    "c": 1,
+    "why": "MSC, McMaster-Carr, Fastenal and Wesco have a $50 minimum."
+  },
+  {
+    "q": "A customer is paying a $400.00 order by credit card. What rate goes on the CRECAR line?",
+    "a": [
+      "$4.00",
+      "$10.00",
+      "$25.00",
+      "$40.00"
+    ],
+    "c": 1,
+    "why": "$400.00 × 0.025 = $10.00. Then write C/C in red on the PO."
+  },
+  {
+    "q": "Who verifies the prices on an order for a house account (rep 16, 19 or 20)?",
+    "a": [
+      "You do, before entering the order",
+      "The customer's dedicated rep",
+      "Nobody, the PO price is always right"
+    ],
+    "c": 0,
+    "why": "House accounts don't have a rep checking prices up front, so you verify them. Julie checks the printed sales order."
+  },
+  {
+    "q": "The PO says the customer will arrange and pay for freight with their own carrier. What's the FOB?",
+    "a": [
+      "Manteno, IL",
+      "Collect / 3rd Party",
+      "FFA"
+    ],
+    "c": 1,
+    "why": "Collect/3rd Party means the customer arranges and pays. Ship with the carrier they named."
+  },
+  {
+    "q": "After Save & New, QuickBooks asks if you want to change the customer's Ship Via permanently. What do you do?",
+    "a": [
+      "Click Yes, it saves time next order",
+      "Don't change it permanently without permission"
+    ],
+    "c": 1,
+    "why": "Never change a customer's defaults permanently without permission."
+  },
+  {
+    "q": "A dialog says the customer has exceeded their credit limit. What do you write on the paperwork?",
+    "a": [
+      "C/C",
+      "CIA",
+      "EC",
+      "MINORD"
+    ],
+    "c": 2,
+    "why": "Write EC at the top of the PO, and on the sales order after printing."
+  }
+]
+      </script>
       <div class="quiz__score"><span id="quiz-score" class="big" aria-live="polite"></span><button class="btn" type="button" id="quiz-reset">Start over</button></div>
     </section>
 
     <footer class="foot">
       <span>Source: <em>Order Entry Procedure</em> (18-page training document).</span>
+      <span>Related: <a href="check-pricing.html">How to Check Pricing</a> · <a href="pick-pack.html">Pick &amp; Pack</a></span>
       <a href="#top">Back to top ↑</a>
     </footer>
   </main>

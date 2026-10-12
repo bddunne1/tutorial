@@ -9,9 +9,11 @@ serves static files (GitHub Pages works: Settings → Pages → deploy from bran
 ```
 index.html                 Library home: one card per procedure
 order-entry.html           Order Entry procedure (QuickBooks sales orders)
+check-pricing.html         How to Check Pricing (price list, purchase history, item search)
+pick-pack.html             Pick & Pack procedure (fulfillment worksheet)
 assets/css/style.css       Shared styles for every page (light + dark, print)
-assets/js/main.js          Shared behavior: contents rail, progress, lightbox, tabs
-assets/js/order-entry.js   Order Entry only: converters and knowledge check
+assets/js/main.js          Shared behavior: contents rail, progress, lightbox, tabs, knowledge check
+assets/js/<procedure>.js   Page-only tools (calculators, practice sheets, pickers)
 assets/img/<procedure>/    Screenshots and examples for each procedure
 ```
 
@@ -33,6 +35,10 @@ assets/img/<procedure>/    Screenshots and examples for each procedure
      on-screen button names: `<span class="ui">Save &amp; New</span>`;
      handwritten red marks: `<span class="redpen">C/C</span>`
    - **Tabs**: see the PO examples viewer in `order-entry.html`
+   - **Knowledge check**: an empty `<form class="quiz" id="quiz-form">` plus a
+     `<script type="application/json" id="quiz-data">` list of
+     `{ "q": question, "a": [options], "c": index of the right option, "why": explanation }`
+     (see the bottom of any procedure page)
 4. Put images in `assets/img/<procedure>/`.
 5. Add a card for it in `index.html` (change a "Planned" card into a link, or add a new one).
 

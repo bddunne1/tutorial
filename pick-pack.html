@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pick &amp; Pack Procedure</title>
+<meta name="description" content="How to print the pick list and packing slip for a sales order using the QuickBooks Sales Order Fulfillment Worksheet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-procedure="pick-pack">
+
+<header class="sitebar">
+  <div class="sitebar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__knot" aria-hidden="true"></span>
+      <span><span class="brand__name">Aamstrand Procedures</span><span class="brand__sub">Training &amp; documentation</span></span>
+    </a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Library</a><span aria-hidden="true">/</span><span>Warehouse</span><span aria-hidden="true">/</span><span>Pick &amp; Pack</span>
+    </nav>
+    <button class="toc-toggle" type="button" id="toc-toggle" aria-expanded="false" aria-controls="rail">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="rail" id="rail" aria-label="On this page">
+    <div class="progress" aria-live="polite">
+      <div class="progress__label"><span>Your progress</span><span class="progress__count" id="progress-count">0 of 4</span></div>
+      <div class="progress__track"><div class="progress__fill" id="progress-fill"></div></div>
+      <button type="button" class="progress__reset" id="progress-reset">Reset progress</button>
+    </div>
+    <ol class="toc">
+      <li><a href="#overview"><span class="toc__num">—</span>Overview</a></li>
+      <li><a href="#open" data-stage="open"><span class="toc__num">1</span>Open the worksheet</a></li>
+      <li><a href="#choose" data-stage="choose"><span class="toc__num">2</span>Choose the order</a></li>
+      <li><a href="#quantities" data-stage="quantities"><span class="toc__num">3</span>Set quantities</a></li>
+      <li><a href="#print" data-stage="print"><span class="toc__num">4</span>Print &amp; paperwork</a></li>
+      <li class="toc__group eyebrow">Reference</li>
+      <li><a href="#exceptions"><span class="toc__num">A</span>Notes &amp; exceptions</a></li>
+      <li><a href="#quiz"><span class="toc__num">B</span>Knowledge check</a></li>
+    </ol>
+  </aside>
+
+  <main class="main" id="top">
+
+    <section class="hero" id="overview">
+      <span class="eyebrow">Warehouse · QuickBooks Desktop</span>
+      <h1>Pick &amp; Pack</h1>
+      <p class="hero__lede">Use the <strong>Sales Order Fulfillment Worksheet</strong> to print a pick list and packing slip for an order. You'll work from the physical sales order, where the quantities to ship are circled, and do one order at a time.</p>
+      <div class="chips">
+        <span class="chip"><b>Stages</b> 4</span>
+        <span class="chip"><b>System</b> QuickBooks</span>
+        <span class="chip"><b>Have ready</b> The sales order, a pen, paper clips</span>
+      </div>
+    </section>
+    <div class="rope" aria-hidden="true"></div>
+
+    <section class="section" aria-labelledby="flow-title" style="border-top:0;padding-top:0">
+      <div class="section__head">
+        <h2 id="flow-title">The process at a glance</h2>
+        <p class="section__intro">Repeat stages 2–4 for each sales order you pick &amp; pack.</p>
+      </div>
+      <ol class="flow" style="grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))">
+        <li><a href="#open" data-stage="open"><span class="flow__n">1</span><span class="flow__t">Open</span><span class="flow__d">Customers → Sales Order Fulfillment Worksheet.</span></a></li>
+        <li><a href="#choose" data-stage="choose"><span class="flow__n">2</span><span class="flow__t">Choose</span><span class="flow__d">Find the SO # and tick its box.</span></a></li>
+        <li><a href="#quantities" data-stage="quantities"><span class="flow__n">3</span><span class="flow__t">Set quantities</span><span class="flow__d">To Fulfill Qty = the circled quantity.</span></a></li>
+        <li><a href="#print" data-stage="print"><span class="flow__n">4</span><span class="flow__t">Print</span><span class="flow__d">Refresh First, Print, mark the SO, clear selections.</span></a></li>
+      </ol>
+    </section>
+
+    <!-- ============ 1. OPEN ============ -->
+    <section class="section" id="open" aria-labelledby="open-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 1</span><span class="eyebrow">In QuickBooks</span></div>
+        <h2 id="open-title">Open the fulfillment worksheet</h2>
+      </div>
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">From the home screen, open <span class="ui">Customers</span> in the top bar and choose <span class="ui">Sales Order Fulfillment Worksheet</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-fulfillment-menu.png" width="432" height="243" alt="Customers menu with Sales Order Fulfillment Worksheet highlighted" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Make sure <span class="ui">Sort</span> (top right) is set to <span class="field">Customer:Job</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-fulfillment-worksheet.png" width="875" height="491" alt="Sales Order Fulfillment Worksheet with the Sort drop-down set to Customer:Job in the top right" loading="lazy" decoding="async"></button>
+            <figcaption>The worksheet. Open sales orders are listed on top; the selected order's lines show underneath; print options are at the bottom.</figcaption>
+          </figure>
+        </div></li>
+      </ol>
+      <label class="complete"><input type="checkbox" data-complete="open"> I've finished stage 1</label>
+    </section>
+
+    <!-- ============ 2. CHOOSE ============ -->
+    <section class="section" id="choose" aria-labelledby="choose-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 2</span><span class="eyebrow">One order at a time</span></div>
+        <h2 id="choose-title">Choose the order</h2>
+        <p class="section__intro">In this example we're picking &amp; packing <strong>SO# 27568</strong> for McMaster-Carr.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">Scroll to the sales order # you want to pick</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-so-list.png" width="543" height="130" alt="Number and Customer:Job columns listing McMaster-Carr sales orders 27543, 27568 and 27569" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Tick the box in the far-left <span class="ui">Choose</span> column</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-choose-checkbox.png" width="516" height="86" alt="Choose checkbox ticked for sales order 27568" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">The bottom half of the screen now shows the order's lines</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-stock-status.png" width="269" height="245" alt="Fulfillable column with green, red X and half-yellow circles next to items 00804III, 00825III, 00826III, 00829III and 19304III" loading="lazy" decoding="async"></button>
+          </figure>
+          <p>The circle next to each item shows what's in stock:</p>
+          <div class="legend">
+            <div class="legend__row"><span class="dot dot--green" aria-hidden="true"></span><span><strong>Green:</strong> enough in stock for the line</span></div>
+            <div class="legend__row"><span class="dot dot--yellow" aria-hidden="true"></span><span><strong>Yellow:</strong> some in stock, but not the full amount</span></div>
+            <div class="legend__row"><span class="dot dot--red" aria-hidden="true"></span><span><strong>Red ✕:</strong> none available</span></div>
+          </div>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Go through each item and check the <span class="ui">To Fulfill Qty</span> and the <span class="ui">Rate</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-fulfill-qty-rate.png" width="657" height="151" alt="Open, Unallocated, To Fulfill Qty, U/M and Rate columns with arrows pointing at To Fulfill Qty and Rate" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+      </ol>
+      <label class="complete"><input type="checkbox" data-complete="choose"> I've finished stage 2</label>
+    </section>
+
+    <!-- ============ 3. QUANTITIES ============ -->
+    <section class="section" id="quantities" aria-labelledby="qty-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 3</span><span class="eyebrow">The most important step</span></div>
+        <h2 id="qty-title">Set quantities from the circles</h2>
+        <p class="section__intro">On the physical sales order, the quantity we want to ship is circled. That's the number that goes in <span class="ui">To Fulfill Qty</span>.</p>
+      </div>
+
+      <div class="callout callout--warn">
+        <span class="callout__icon">Rule</span>
+        <div>
+          <p><strong>Always use the circled quantity</strong> on the physical sales order you're picking &amp; packing.</p>
+          <p>If an item has <strong>no circled quantity, it is not shipping</strong>. Set its To Fulfill Qty to <span class="field">0</span>.</p>
+        </div>
+      </div>
+
+      <figure class="figure">
+        <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/so-circled-qty.png" width="875" height="331" alt="Printed sales order line for 45150III, 1/4 sash cord, ordered 312 with 144 circled in red, and a note: for this order we can't ship complete, so we will ship what we have and back order the rest" loading="lazy" decoding="async"></button>
+        <figcaption>312 were ordered but <b>144</b> is circled. We can't ship complete, so we ship what we have and back order the rest.</figcaption>
+      </figure>
+      <figure class="figure">
+        <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-fulfill-144.png" width="401" height="142" alt="To Fulfill Qty changed to 144 for a line with 312 open" loading="lazy" decoding="async"></button>
+        <figcaption>So change To Fulfill Qty from 312 to <b>144</b>.</figcaption>
+      </figure>
+
+      <form class="tool" id="practice" autocomplete="off" style="max-width:52rem">
+        <div class="tool__head"><h3>Practice: fill in To Fulfill Qty</h3><span class="small muted">Practice order based on the screenshots above</span></div>
+        <p class="small">Here's a sales order with the circles already marked. Type what you'd enter for each line, then check your answers.</p>
+        <div class="sheet">
+          <table>
+            <thead><tr><th>Item</th><th>Ordered</th><th>Circled on SO</th><th>To Fulfill Qty</th></tr></thead>
+            <tbody id="practice-rows"></tbody>
+          </table>
+        </div>
+        <div class="practice__bar">
+          <button class="btn" type="submit">Check answers</button>
+          <button class="btn" type="button" id="practice-reset">Clear</button>
+          <span id="practice-result" class="small" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <label class="complete"><input type="checkbox" data-complete="quantities"> I've finished stage 3</label>
+    </section>
+
+    <!-- ============ 4. PRINT ============ -->
+    <section class="section" id="print" aria-labelledby="print-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 4</span><span class="eyebrow">Once quantities are right</span></div>
+        <h2 id="print-title">Print &amp; paperwork</h2>
+      </div>
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">Click <span class="ui">Refresh First</span>, then <span class="ui">Print</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/pick-pack/qb-print-your-work.png" width="357" height="160" alt="Print Your Work panel with Pick Lists and Packing Slips ticked, and arrows pointing to Refresh First and Print" loading="lazy" decoding="async"></button>
+            <figcaption>In the <b>Print Your Work</b> panel, Pick Lists and Packing Slips are ticked.</figcaption>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Write <span class="redpen">P &amp; P</span> at the top of the sales order, with the date and your initials</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Clear your selections after every print</p>
+          <p>Use the <span class="ui">Clear Choices</span> button under the list of sales orders.</p>
+          <div class="callout callout--warn"><span class="callout__icon">Watch out</span><p>If you don't clear your selections, the next print will include <strong>everything</strong> you've selected. We only print one order at a time.</p></div>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Paper-clip the printed pick list and packing slip together</p>
+          <p>MSC orders need a different packing slip. See <a href="#case-msc">MSC packing slips</a>.</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Lay them with the sales order</p>
+          <p>That order is done. Go back to <a href="#choose">stage 2</a> for the next one.</p>
+        </div></li>
+      </ol>
+      <label class="complete"><input type="checkbox" data-complete="print"> I've finished stage 4</label>
+    </section>
+
+    <!-- ============ A. EXCEPTIONS ============ -->
+    <section class="section" id="exceptions" aria-labelledby="exc-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">REF A</span><span class="eyebrow">When something's different</span></div>
+        <h2 id="exc-title">Notes &amp; exceptions</h2>
+      </div>
+      <div class="cases">
+        <article class="case" id="case-msc">
+          <div class="case__head"><h3>MSC packing slips</h3><span class="field">MSC Packing Slip</span></div>
+          <p class="case__when">MSC pick &amp; packs need a special packing slip.</p>
+          <ol>
+            <li>Open the sales order you just pick &amp; packed.</li>
+            <li>Change the <span class="ui">Template</span> (top right) to <span class="field">MSC Packing Slip</span>.</li>
+            <li>Print the sales order. That gives you the MSC packing slip.</li>
+          </ol>
+        </article>
+        <article class="case" id="case-stock">
+          <div class="case__head"><h3>Circled, but not enough in stock</h3></div>
+          <p class="case__when">An item has a circled quantity, but QuickBooks doesn't show enough stock for it.</p>
+          <ol>
+            <li><strong>Check if it's a work order.</strong> Work-ordered items are made in house, and inventory may not be updated yet.</li>
+            <li>If it isn't a work order, there may be a mistake. <strong>Check with Jillian</strong> that the circled quantity is correct.</li>
+          </ol>
+        </article>
+        <article class="case" id="case-partial">
+          <div class="case__head"><h3>Partial shipment with stock available</h3></div>
+          <p class="case__when">Sometimes we ship only part of a line even though there's enough in stock to ship it all.</p>
+          <p>That's <strong>not a mistake</strong>. Still enter the circled quantity.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ B. QUIZ ============ -->
+    <section class="section quiz-section" id="quiz" aria-labelledby="quiz-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">REF B</span><span class="eyebrow">Check your understanding</span></div>
+        <h2 id="quiz-title">Knowledge check</h2>
+        <p class="section__intro">Pick an answer to see if you're right. Nothing is recorded.</p>
+      </div>
+      <form class="quiz" id="quiz-form" autocomplete="off"></form>
+      <script type="application/json" id="quiz-data">
+      [
+        { "q": "A line was ordered at 312 and the sales order has 144 circled. What do you enter in To Fulfill Qty?", "a": ["312", "144", "168", "0"], "c": 1, "why": "Always use the circled quantity. The rest is back ordered." },
+        { "q": "An item on the sales order has no quantity circled. What do you enter?", "a": ["The ordered quantity", "Whatever is in stock", "0"], "c": 2, "why": "No circle means it is not shipping, so To Fulfill Qty is 0." },
+        { "q": "You just printed a pick list and packing slip. What must you do before the next order?", "a": ["Click Refresh First", "Clear the selections", "Close the worksheet"], "c": 1, "why": "If you don't clear selections, the next print includes everything you've selected." },
+        { "q": "What do you write at the top of the sales order after printing?", "a": ["P & P, the date and your initials", "The SO # and the date", "C/C in red"], "c": 0, "why": "Write P & P with the date and your initials." },
+        { "q": "You're picking an MSC order. How do you get its packing slip?", "a": ["Print a normal packing slip", "Change the sales order's template to MSC Packing Slip and print it", "MSC orders don't need one"], "c": 1, "why": "Open the sales order, switch the template to MSC Packing Slip, and print." },
+        { "q": "A quantity is circled but QuickBooks shows not enough stock, and it isn't a work order. What do you do?", "a": ["Enter what's in stock instead", "Set it to 0", "Check with Jillian that the circled quantity is correct"], "c": 2, "why": "It may be a mistake, so check with Jillian." },
+        { "q": "QuickBooks shows enough stock to ship a line in full, but a smaller number is circled. What does that mean?", "a": ["Someone made a mistake", "Nothing's wrong; we sometimes ship partial quantities. Enter the circled number", "Ship the full amount"], "c": 1, "why": "Partial shipments with stock on hand happen and are not a mistake." }
+      ]
+      </script>
+      <div class="quiz__score"><span id="quiz-score" class="big" aria-live="polite"></span><button class="btn" type="button" id="quiz-reset">Start over</button></div>
+    </section>
+
+    <footer class="foot">
+      <span>Source: <em>How to Pick &amp; Pack an Order</em> (5-page training document).</span>
+      <span>Related: <a href="order-entry.html">Order Entry</a></span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </main>
+</div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
+  <div class="lightbox__bar"><span id="lightbox-cap"></span><button class="lightbox__close" type="button" id="lightbox-close">Close</button></div>
+  <img id="lightbox-img" src="" alt="">
+</dialog>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/pick-pack.js"></script>
+</body>
+</html>

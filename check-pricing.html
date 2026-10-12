@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to Check Pricing</title>
+<meta name="description" content="Three ways to check a customer's price: their price list, purchase history in QuickBooks, or finding the item by description.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-procedure="check-pricing">
+
+<header class="sitebar">
+  <div class="sitebar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__knot" aria-hidden="true"></span>
+      <span><span class="brand__name">Aamstrand Procedures</span><span class="brand__sub">Training &amp; documentation</span></span>
+    </a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Library</a><span aria-hidden="true">/</span><span>Sales</span><span aria-hidden="true">/</span><span>Check Pricing</span>
+    </nav>
+    <button class="toc-toggle" type="button" id="toc-toggle" aria-expanded="false" aria-controls="rail">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="rail" id="rail" aria-label="On this page">
+    <div class="progress" aria-live="polite">
+      <div class="progress__label"><span>Methods learned</span><span class="progress__count" id="progress-count">0 of 3</span></div>
+      <div class="progress__track"><div class="progress__fill" id="progress-fill"></div></div>
+      <button type="button" class="progress__reset" id="progress-reset">Reset progress</button>
+    </div>
+    <ol class="toc">
+      <li><a href="#overview"><span class="toc__num">—</span>Which method?</a></li>
+      <li><a href="#method-1" data-stage="m1"><span class="toc__num">1</span>Customer price list</a></li>
+      <li><a href="#method-2" data-stage="m2"><span class="toc__num">2</span>Purchase history</a></li>
+      <li><a href="#method-3" data-stage="m3"><span class="toc__num">3</span>Item List by description</a></li>
+      <li class="toc__group eyebrow">Reference</li>
+      <li><a href="#quiz"><span class="toc__num">A</span>Knowledge check</a></li>
+    </ol>
+  </aside>
+
+  <main class="main" id="top">
+
+    <section class="hero" id="overview">
+      <span class="eyebrow">Sales · QuickBooks &amp; Excel</span>
+      <h1>How to Check Pricing</h1>
+      <p class="hero__lede">Every customer has their own pricing. Before you enter an order for a house account, check that the prices on the PO match what that customer should pay. There are three ways to look a price up, depending on what you know about the item.</p>
+      <div class="chips">
+        <span class="chip"><b>Methods</b> 3</span>
+        <span class="chip"><b>Systems</b> Customer Price List, QuickBooks</span>
+        <span class="chip"><b>Used in</b> <a href="order-entry.html#verify">Order Entry, stage 1</a></span>
+      </div>
+    </section>
+    <div class="rope" aria-hidden="true"></div>
+
+    <section class="section" aria-labelledby="pick-title" style="border-top:0;padding-top:0">
+      <div class="section__head">
+        <h2 id="pick-title">Which method should I use?</h2>
+        <p class="section__intro">Pick what you have from the PO.</p>
+      </div>
+      <div class="picker" id="picker">
+        <div class="picker__opts" role="radiogroup" aria-label="What do you have?">
+          <label class="pill"><input type="radio" name="have" value="theirs" id="have-theirs"><span>Their part # only</span></label>
+          <label class="pill"><input type="radio" name="have" value="ours" id="have-ours" checked><span>Our part #</span></label>
+          <label class="pill"><input type="radio" name="have" value="desc" id="have-desc"><span>Only a description</span></label>
+        </div>
+        <div class="methods">
+          <a class="method" href="#method-1" data-method="1">
+            <span class="method__n">METHOD 1</span>
+            <h3>Customer price list</h3>
+            <span class="method__need">Needs their part # <em>or</em> ours</span>
+            <span class="method__then" data-then hidden></span>
+          </a>
+          <a class="method" href="#method-2" data-method="2">
+            <span class="method__n">METHOD 2</span>
+            <h3>Purchase history</h3>
+            <span class="method__need">Needs our part #</span>
+            <span class="method__then" data-then hidden></span>
+          </a>
+          <a class="method" href="#method-3" data-method="3">
+            <span class="method__n">METHOD 3</span>
+            <h3>Item List by description</h3>
+            <span class="method__need">When you only have a description</span>
+            <span class="method__then" data-then hidden></span>
+          </a>
+        </div>
+        <p class="small muted" id="picker-note" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ============ METHOD 1 ============ -->
+    <section class="section" id="method-1" aria-labelledby="m1-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">METHOD 1</span><span class="eyebrow">Fastest when a list exists</span></div>
+        <h2 id="m1-title">Use the customer price list</h2>
+      </div>
+      <span class="need">At least their part # or our part #</span>
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">In <strong>Shared Works</strong>, open the file named <span class="ui">Customer Price List</span></p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Find the customer and open their most recent pricing document</p>
+          <p>It's most likely an Excel spreadsheet. Every customer's looks a little different. Here's Box Partners:</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/excel-price-list.png" width="875" height="428" alt="Box Partners price list spreadsheet with columns for Aamstrand part number, BOX part number, description and 2021 price each, with arrows on the two part number columns and the price column" loading="lazy" decoding="async"></button>
+            <figcaption>Our part #, their part # and the price, all on one row.</figcaption>
+          </figure>
+          <div class="callout callout--tip"><span class="callout__icon">Try it</span><p>Remember the Box Partners PO in <a href="order-entry.html#po-examples">Order Entry</a>? It ordered <span class="field">TWR101</span> at <strong>$9.14</strong>. Row 4 of this list shows TWR101 is our <span class="field">10000III</span> at <strong>$9.14</strong>. The price matches.</p></div>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Can't spot the item? Use <span class="ui">Find &amp; Select</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/excel-find-select.png" width="447" height="171" alt="Excel ribbon Editing group with the Find and Select button" loading="lazy" decoding="async"></button>
+            <figcaption>Find &amp; Select is at the top right of Excel's Home ribbon. <b>Ctrl+F</b> does the same thing.</figcaption>
+          </figure>
+        </div></li>
+      </ol>
+      <label class="complete"><input type="checkbox" data-complete="m1"> I can use method 1</label>
+    </section>
+
+    <!-- ============ METHOD 2 ============ -->
+    <section class="section" id="method-2" aria-labelledby="m2-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">METHOD 2</span><span class="eyebrow">In QuickBooks</span></div>
+        <h2 id="m2-title">Check purchase history</h2>
+        <p class="section__intro">See what this customer paid the last time they bought the item.</p>
+      </div>
+      <span class="need">At least our part #</span>
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">From the home screen, open <span class="ui">Inventory</span> in the top bar and click <span class="ui">Item List</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/qb-inventory-menu.png" width="504" height="194" alt="Inventory menu with Item List highlighted" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Search for the item #</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Right-click the item and choose <span class="ui">QuickReport: 12345III</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/qb-quickreport-menu.png" width="471" height="521" alt="Item List search for 16120 with the right-click menu open and QuickReport: 16120III highlighted at the bottom" loading="lazy" decoding="async"></button>
+            <figcaption>The menu option shows the item # you searched, here <b>16120III</b>.</figcaption>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Click <span class="ui">Customize Report</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/qb-customize-report.png" width="440" height="183" alt="Customize Report button at the top left of the report window" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Go to the <span class="ui">Filters</span> tab</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/qb-modify-report-display.png" width="657" height="466" alt="Modify Report window on the Display tab, with an arrow pointing to the Filters tab" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Select the <span class="ui">Name</span> filter and enter the company name, then click <span class="ui">OK</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/qb-modify-report-filters.png" width="657" height="477" alt="Filters tab with Name selected in the filter list and a callout to enter the company name in the Name drop-down" loading="lazy" decoding="async"></button>
+            <figcaption>This narrows the report to the one company you're checking.</figcaption>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">You'll see every time that company bought the item</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/qb-item-history.png" width="822" height="366" alt="QuickReport for 16120III listing McMaster-Carr invoices from January to June 2026 with quantities" loading="lazy" decoding="async"></button>
+            <figcaption>McMaster-Carr's invoices for 16120III. The newest is at the bottom of the list.</figcaption>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Double-click an invoice to open it</p>
+          <p>Use the <strong>most recent</strong> invoice if you can.</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Find the item on the invoice and read the <span class="ui">Price Each</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/check-pricing/qb-invoice-price.png" width="361" height="227" alt="Invoice for S.O. 27280, P.O. GN-36535810, with Price Each 24.64 marked by an arrow" loading="lazy" decoding="async"></button>
+            <figcaption>The last time they bought this item it was <b>$24.64</b>. Check that against the price on your PO.</figcaption>
+          </figure>
+        </div></li>
+      </ol>
+      <label class="complete"><input type="checkbox" data-complete="m2"> I can use method 2</label>
+    </section>
+
+    <!-- ============ METHOD 3 ============ -->
+    <section class="section" id="method-3" aria-labelledby="m3-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">METHOD 3</span><span class="eyebrow">Find the item first</span></div>
+        <h2 id="m3-title">Search the Item List by description</h2>
+        <p class="section__intro">When the PO only describes the item, find our item # first, then use method 2 to get the price.</p>
+      </div>
+      <span class="need">Only the item's description</span>
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">Open <span class="ui">Inventory</span> → <span class="ui">Item List</span></p>
+          <p class="small muted">Same menu as method 2.</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Search using what the description tells you</p>
+          <p>Our descriptions follow a pattern. Look for these identifiers:</p>
+          <div class="anatomy" aria-label="Example description 5/32 SOLID BRAID NYL WHITE 500 FT SPOOL broken into parts">
+            <span class="seg"><code>5/32</code><small>Diameter</small></span>
+            <span class="seg"><code>SOLID BRAID</code><small>Assembly</small></span>
+            <span class="seg"><code>NYL</code><small>Material</small></span>
+            <span class="seg"><code>WHITE</code><small>Color</small></span>
+            <span class="seg"><code>500 FT</code><small>Length</small></span>
+            <span class="seg"><code>SPOOL</code><small>Pack</small></span>
+          </div>
+          <p class="small muted">Item 18445III, from the Nassco order in Order Entry.</p>
+          <p>Some words are abbreviated, so you may need some trial and error. Abbreviations seen in our item descriptions:</p>
+          <div class="abbr">
+            <div><b>NYL</b><span>Nylon</span></div>
+            <div><b>POLY</b><span>Polypropylene</span></div>
+            <div><b>PLYEST</b><span>Polyester</span></div>
+            <div><b>TWIST</b><span>Twisted</span></div>
+            <div><b>DBL BRAID</b><span>Double braid</span></div>
+            <div><b>HOLO BRAID</b><span>Hollow braid</span></div>
+          </div>
+          <div class="callout callout--tip"><span class="callout__icon">Tip</span><p>Start with one or two words, like <span class="field">SOLID BRAID</span> or <span class="field">5/32</span>, then narrow down by color and length.</p></div>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Found a match? Double-check with someone</p>
+          <div class="callout callout--warn"><span class="callout__icon">Always</span><p><strong>Ask questions unless you are 1000% sure it's the correct item.</strong></p></div>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Now that you have our item #, follow <a href="#method-2">method 2</a> to get the price</p>
+        </div></li>
+      </ol>
+      <label class="complete"><input type="checkbox" data-complete="m3"> I can use method 3</label>
+    </section>
+
+    <!-- ============ QUIZ ============ -->
+    <section class="section quiz-section" id="quiz" aria-labelledby="quiz-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">REF A</span><span class="eyebrow">Check your understanding</span></div>
+        <h2 id="quiz-title">Knowledge check</h2>
+        <p class="section__intro">Pick an answer to see if you're right. Nothing is recorded.</p>
+      </div>
+      <form class="quiz" id="quiz-form" autocomplete="off"></form>
+      <script type="application/json" id="quiz-data">
+      [
+        { "q": "A PO lists only the customer's own part number. Which method can you use?", "a": ["Method 1: customer price list", "Method 2: purchase history", "Neither"], "c": 0, "why": "Method 1 works with their part # or ours. Method 2 needs our part #." },
+        { "q": "Where is the Customer Price List kept?", "a": ["In QuickBooks under Reports", "In Shared Works", "In the customer's email"], "c": 1, "why": "It's a file named Customer Price List in Shared Works." },
+        { "q": "In method 2, how do you open an item's purchase history?", "a": ["Double-click the item in the Item List", "Right-click the item and choose QuickReport", "Customers → Customer Center"], "c": 1, "why": "Right-click the item in the Item List and choose QuickReport: (item #)." },
+        { "q": "How do you narrow the QuickReport to one customer?", "a": ["Customize Report → Filters → Name, then enter the company", "Sort by Name", "Change the Dates drop-down"], "c": 0, "why": "Use the Name filter on the Filters tab of Customize Report." },
+        { "q": "Which invoice should you check the price on?", "a": ["The oldest one", "The most recent one, if possible", "Any one, they're all the same"], "c": 1, "why": "Use the most recent invoice if possible." },
+        { "q": "You found an item by description that looks right but you're not completely sure. What now?", "a": ["Use it and move on", "Double-check with someone before using it", "Pick the cheapest match"], "c": 1, "why": "Ask questions unless you're 1000% sure it's the correct item." }
+      ]
+      </script>
+      <div class="quiz__score"><span id="quiz-score" class="big" aria-live="polite"></span><button class="btn" type="button" id="quiz-reset">Start over</button></div>
+    </section>
+
+    <footer class="foot">
+      <span>Source: <em>How to Check Pricing</em> (6-page training document).</span>
+      <span>Related: <a href="order-entry.html">Order Entry</a></span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </main>
+</div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
+  <div class="lightbox__bar"><span id="lightbox-cap"></span><button class="lightbox__close" type="button" id="lightbox-close">Close</button></div>
+  <img id="lightbox-img" src="" alt="">
+</dialog>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/check-pricing.js"></script>
+</body>
+</html>
