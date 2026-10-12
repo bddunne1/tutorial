@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aamstrand Procedure Library</title>
+<meta name="description" content="Training and documentation for Aamstrand Ropes &amp; Twines office procedures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-procedure="library">
+
+<header class="sitebar">
+  <div class="sitebar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__knot" aria-hidden="true"></span>
+      <span><span class="brand__name">Aamstrand Procedures</span><span class="brand__sub">Training &amp; documentation</span></span>
+    </a>
+  </div>
+</header>
+
+<main class="library">
+  <div class="library__head">
+    <span class="eyebrow">Aamstrand Ropes &amp; Twines · Manteno, IL</span>
+    <h1>Procedure Library</h1>
+    <p class="hero__lede">How we do things, step by step. Use these guides to train new team members and as a reference whenever you need a refresher.</p>
+    <form class="search" role="search" id="lib-search" autocomplete="off">
+      <label class="visually-hidden" for="lib-q">Search procedures</label>
+      <input id="lib-q" type="search" placeholder="Search procedures, e.g. QuickBooks, shipping">
+    </form>
+  </div>
+  <div class="rope" aria-hidden="true" style="margin-block:0"></div>
+
+  <section class="cat" data-cat>
+    <div class="cat__title"><h2>Sales</h2><span class="muted small">Orders, customers, pricing</span></div>
+    <div class="cards">
+      <a class="card" href="order-entry.html" data-keywords="order entry sales order purchase order po quickbooks minord crecar credit card fob shipping print">
+        <div class="card__meta"><span class="status status--live">Ready</span><span class="chip"><b>System</b> QuickBooks</span></div>
+        <h3>Order Entry</h3>
+        <p class="card__desc">Turn a customer's purchase order into a QuickBooks sales order: verify, enter, handle special cases, finish and print.</p>
+        <span class="card__go">Start training →</span>
+      </a>
+      <div class="card card--empty" data-keywords="how to check prices pricing">
+        <div class="card__meta"><span class="status status--draft">Planned</span></div>
+        <h3>How to Check Prices</h3>
+        <p class="card__desc">Look up a customer's pricing before entering an order.</p>
+      </div>
+      <div class="card card--empty" data-keywords="how to check items part number item">
+        <div class="card__meta"><span class="status status--draft">Planned</span></div>
+        <h3>How to Check Items</h3>
+        <p class="card__desc">Find our part # when a customer only lists theirs.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="muted small" id="lib-empty" hidden>No procedures match that search.</p>
+
+  <footer class="foot">
+    <span>Have a procedure that should be here? Write it down and it can be added.</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var q = document.getElementById("lib-q");
+  var cards = Array.prototype.slice.call(document.querySelectorAll("[data-keywords]"));
+  document.getElementById("lib-search").addEventListener("submit", function (e) { e.preventDefault(); });
+  q.addEventListener("input", function () {
+    var term = q.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function (c) {
+      var hit = !term || (c.textContent + " " + c.getAttribute("data-keywords")).toLowerCase().indexOf(term) !== -1;
+      c.hidden = !hit; if (hit) shown++;
+    });
+    document.querySelectorAll("[data-cat]").forEach(function (s) { s.hidden = !s.querySelector("[data-keywords]:not([hidden])"); });
+    document.getElementById("lib-empty").hidden = shown > 0;
+  });
+})();
+</script>
+</body>
+</html>

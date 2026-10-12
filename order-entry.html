@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Order Entry Procedure</title>
+<meta name="description" content="Step-by-step training for entering customer purchase orders into QuickBooks as sales orders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-procedure="order-entry">
+
+<header class="sitebar">
+  <div class="sitebar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__knot" aria-hidden="true"></span>
+      <span><span class="brand__name">Aamstrand Procedures</span><span class="brand__sub">Training &amp; documentation</span></span>
+    </a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Library</a><span aria-hidden="true">/</span><span>Sales</span><span aria-hidden="true">/</span><span>Order Entry</span>
+    </nav>
+    <button class="toc-toggle" type="button" id="toc-toggle" aria-expanded="false" aria-controls="rail">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="rail" id="rail" aria-label="On this page">
+    <div class="progress" aria-live="polite">
+      <div class="progress__label"><span>Your progress</span><span class="progress__count" id="progress-count">0 of 5</span></div>
+      <div class="progress__track"><div class="progress__fill" id="progress-fill"></div></div>
+      <button type="button" class="progress__reset" id="progress-reset">Reset progress</button>
+    </div>
+    <ol class="toc">
+      <li><a href="#overview"><span class="toc__num">—</span>Overview</a></li>
+      <li><a href="#verify" data-stage="verify"><span class="toc__num">1</span>Verify the PO</a></li>
+      <li><a href="#enter" data-stage="enter"><span class="toc__num">2</span>Enter the order</a></li>
+      <li><a href="#special" data-stage="special"><span class="toc__num">3</span>Special cases</a></li>
+      <li><a href="#finish" data-stage="finish"><span class="toc__num">4</span>Finish the order</a></li>
+      <li><a href="#print" data-stage="print"><span class="toc__num">5</span>Print &amp; hand off</a></li>
+      <li class="toc__group eyebrow">Reference</li>
+      <li><a href="#po-format"><span class="toc__num">A</span>Check PO format</a></li>
+      <li><a href="#reference"><span class="toc__num">B</span>Quick reference</a></li>
+      <li><a href="#quiz"><span class="toc__num">C</span>Knowledge check</a></li>
+    </ol>
+  </aside>
+
+  <main class="main" id="top">
+
+    <!-- ============ HERO / OVERVIEW ============ -->
+    <section class="hero" id="overview">
+      <span class="eyebrow">Sales · QuickBooks Desktop</span>
+      <h1>Order Entry</h1>
+      <p class="hero__lede">Customers send orders by phone, through their dedicated rep, or by email. Every one of them gets entered into QuickBooks as a <strong>Sales Order</strong>. This guide walks you through the whole process, from reading the customer's purchase order to handing the printed paperwork to a rep.</p>
+      <div class="chips">
+        <span class="chip"><b>Stages</b> 5</span>
+        <span class="chip"><b>System</b> QuickBooks</span>
+        <span class="chip"><b>Have ready</b> POs, a red pen, a stapler</span>
+      </div>
+    </section>
+    <div class="rope" aria-hidden="true"></div>
+
+    <section class="section" aria-labelledby="flow-title" style="border-top:0;padding-top:0">
+      <div class="section__head">
+        <h2 id="flow-title">The process at a glance</h2>
+        <p class="section__intro">Work through your stack of purchase orders one at a time through stages 1–4, then print them all together in stage 5.</p>
+      </div>
+      <ol class="flow">
+        <li><a href="#verify" data-stage="verify"><span class="flow__n">1</span><span class="flow__t">Verify</span><span class="flow__d">Find the key info on the PO and confirm items and prices.</span></a></li>
+        <li><a href="#enter" data-stage="enter"><span class="flow__n">2</span><span class="flow__t">Enter</span><span class="flow__d">Ship-to, FOB, PO #, items, quantities and rates.</span></a></li>
+        <li><a href="#special" data-stage="special"><span class="flow__n">3</span><span class="flow__t">Special cases</span><span class="flow__d">MINORD, CRECAR, CIA, customer part #s, instructions.</span><span class="flow__tag">Only if needed</span></a></li>
+        <li><a href="#finish" data-stage="finish"><span class="flow__n">4</span><span class="flow__t">Finish</span><span class="flow__d">Final check, mark the PO, Save &amp; New.</span></a></li>
+        <li><a href="#print" data-stage="print"><span class="flow__n">5</span><span class="flow__t">Print</span><span class="flow__d">Batch print, staple each PO to its SO, hand to the rep.</span></a></li>
+      </ol>
+    </section>
+
+    <!-- ============ 1. VERIFY ============ -->
+    <section class="section" id="verify" aria-labelledby="verify-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 1</span><span class="eyebrow">Before you touch QuickBooks</span></div>
+        <h2 id="verify-title">Verify the purchase order</h2>
+        <p class="section__intro">Start by finding everything you'll need on the customer's purchase order (PO). Once you're confident the items and prices are right, you can enter the order.</p>
+      </div>
+
+      <h3>Find these seven things on the PO</h3>
+      <ul class="findlist">
+        <li><span class="findlist__n">i</span><span>Shipping and billing address</span></li>
+        <li><span class="findlist__n">ii</span><span>Purchase order number</span></li>
+        <li><span class="findlist__n">iii</span><span>Our item #, quantity and listed price</span></li>
+        <li><span class="findlist__n">iv</span><span>FOB and shipping info</span></li>
+        <li><span class="findlist__n">v</span><span>Billing terms</span></li>
+        <li><span class="findlist__n">vi</span><span>Due date (if there is one)</span></li>
+        <li><span class="findlist__n">vii</span><span>Any special instructions from the customer</span></li>
+      </ul>
+
+      <div class="callout callout--warn">
+        <span class="callout__icon">Key rule</span>
+        <div>
+          <p><strong>Always work in spools.</strong> Some customers list quantities in feet, some in number of spools. Prices may be per foot, per spool or per case. You want the <strong># of spools</strong> and the <strong>price per spool</strong>, because that's what goes on the Sales Order.</p>
+        </div>
+      </div>
+
+      <h3 id="po-examples">Every customer's PO looks different</h3>
+      <p class="text">Use these real examples to practice spotting the information. The red labels show where each piece lives.</p>
+
+      <div class="viewer" id="po-viewer">
+        <div class="tabs" role="tablist" aria-label="Example purchase orders">
+          <button class="tab" role="tab" id="tab-nassco" aria-controls="panel-nassco" aria-selected="true">Nassco<small>Fig. 1 · handwritten notes</small></button>
+          <button class="tab" role="tab" id="tab-box" aria-controls="panel-box" aria-selected="false" tabindex="-1">Box Partners<small>Fig. 2 · both item #s</small></button>
+          <button class="tab" role="tab" id="tab-mcm" aria-controls="panel-mcm" aria-selected="false" tabindex="-1">McMaster-Carr<small>Fig. 3 · priced per foot</small></button>
+          <button class="tab" role="tab" id="tab-pex" aria-controls="panel-pex" aria-selected="false" tabindex="-1">Packaging Exchange<small>Fig. 4 · no item # of ours</small></button>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-nassco" aria-labelledby="tab-nassco">
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/po-nassco.jpg" width="1105" height="1204" alt="Nassco purchase order with PO number 7002548, ship-to John Deere Waterloo Works, special instructions, item 18445 at 11.99 per spool, and handwritten notes MinORD $25 and Must ship Mon!" loading="lazy" decoding="async"></button>
+            <figcaption><b>Fig. 1</b> Nassco PO, with notes written on it during verification.</figcaption>
+          </figure>
+          <div class="panel__notes">
+            <h4>What to notice</h4>
+            <ul>
+              <li><span class="label-key">PO #</span> 7002548, top right.</li>
+              <li><span class="label-key">OUR ITEM #</span> 18445 is listed directly. Easy.</li>
+              <li><span class="label-key">PRICING (PER SPOOL)</span> 11.99 with U/M of <span class="field">SP</span>, already per spool.</li>
+              <li><span class="label-key">SPECIAL INSTRUCTIONS*</span> Their customer's PO (8432555) must be on all paperwork, and it ships UPS collect.</li>
+              <li>The order is only $11.99, below the minimum, so <span class="redpen">MinORD $25</span> was written on the PO as a reminder.</li>
+            </ul>
+            <p class="small muted">This same order is used as the worked example in stage 2.</p>
+          </div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-box" aria-labelledby="tab-box" hidden>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/po-box-partners.jpg" width="1087" height="842" alt="Box Partners purchase order PO1254108 listing their item numbers TWR101 and TWT350, our item numbers 10000 and 33450 in the Vendor Name column, units EA, and freight terms PPD/ADD" loading="lazy" decoding="async"></button>
+            <figcaption><b>Fig. 2</b> Box Packaging Partners PO.</figcaption>
+          </figure>
+          <div class="panel__notes">
+            <h4>What to notice</h4>
+            <ul>
+              <li><span class="label-key">THEIR ITEM #</span> is in the Item column (TWR101).</li>
+              <li><span class="label-key">OUR ITEM #</span> is hiding in the <em>Vendor Name</em> column (10000, 33450).</li>
+              <li><span class="label-key">QUANTITY AND UOM</span> Units are <span class="field">EA</span> (each spool).</li>
+              <li><span class="label-key">SHIPPING INSTRUCTIONS</span> Freight terms are PPD/ADD: prepay and add.</li>
+              <li>Due date is in the <em>Receive By</em> field: 7/31/2026.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-mcm" aria-labelledby="tab-mcm" hidden>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/po-mcmaster-carr.jpg" width="1124" height="1008" alt="McMaster-Carr purchase order PH-38299750 for 2,400 FT of item 42250, 50 foot length, at .114 per foot, with general shipping instructions" loading="lazy" decoding="async"></button>
+            <figcaption><b>Fig. 3</b> McMaster-Carr PO, quantity and price both in feet.</figcaption>
+          </figure>
+          <div class="panel__notes">
+            <h4>What to notice</h4>
+            <ul>
+              <li><span class="label-key">PO #</span> PH-38299750.</li>
+              <li><span class="label-key">QUANTITY (PER FT)</span> 2,400 FT and <span class="label-key">PRICING (PER FT)</span> $.114/FT. <strong>Both must be converted.</strong></li>
+              <li>The description says each spool is a 50' length:<br>2,400 ft ÷ 50 = <strong>48 spools</strong><br>$.114 × 50 = <strong>$5.70 per spool</strong><br>48 × $5.70 = $273.60, matching their total.</li>
+              <li>Read the <em>General Instructions</em>: shipping method depends on the UPS ground charge.</li>
+              <li>McMaster-Carr has a <strong>$50</strong> minimum order, not $200.</li>
+            </ul>
+            <p class="small"><a href="#convert">Try this in the unit converter ↓</a></p>
+          </div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-pex" aria-labelledby="tab-pex" hidden>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/po-packaging-exchange.jpg" width="1045" height="834" alt="Packaging Exchange purchase order PO-CHI-2262 listing only their item numbers UH-NR, UH-49000 and UH-SR with expected dates of 07/31/2026 and no shipping instructions" loading="lazy" decoding="async"></button>
+            <figcaption><b>Fig. 4</b> Packaging Exchange PO.</figcaption>
+          </figure>
+          <div class="panel__notes">
+            <h4>What to notice</h4>
+            <ul>
+              <li><span class="label-key">THEIR ITEM #</span> only (UH-NR, UH-49000, UH-SR). They don't list our item #, so you'll need to convert to ours.</li>
+              <li><span class="label-key">DUE DATE</span> is in the <em>Expected</em> column: 07/31/2026. Packaging Exchange is on the <a href="#reference">watch due dates</a> list.</li>
+              <li>No shipping instructions given. Use the customer's default, but verify it first.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="units">Units of measure</h3>
+      <div class="table-wrap" style="max-width:var(--measure)">
+        <table>
+          <thead><tr><th>Unit on PO</th><th>Means</th><th>What to do</th></tr></thead>
+          <tbody>
+            <tr><td><span class="field">SP</span></td><td>Each spool</td><td>Enter as-is</td></tr>
+            <tr><td><span class="field">EA</span></td><td>Each spool</td><td>Enter as-is</td></tr>
+            <tr><td><span class="field">FT</span></td><td>Per foot</td><td>Divide quantity by feet per spool; multiply price by feet per spool</td></tr>
+            <tr><td><span class="field">CS</span></td><td>Per case</td><td>Convert to spools before entering</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text small muted">Units will usually be SP, EA, FT or CS for most customers. <strong>Convert to EA before entering in QuickBooks.</strong></p>
+
+      <form class="tool" id="convert" autocomplete="off">
+        <div class="tool__head"><h3>Feet → spools converter</h3><span class="small muted">Pre-filled with the McMaster-Carr example</span></div>
+        <div class="tool__grid">
+          <label for="cv-qty">Quantity on PO (ft)<input id="cv-qty" type="number" min="0" step="any" value="2400" inputmode="decimal"></label>
+          <label for="cv-len">Feet per spool<input id="cv-len" type="number" min="0" step="any" value="50" inputmode="decimal"></label>
+          <label for="cv-price">Price on PO (per ft)<input id="cv-price" type="number" min="0" step="any" value="0.114" inputmode="decimal"></label>
+        </div>
+        <div class="result" id="cv-result" aria-live="polite"></div>
+      </form>
+
+      <h3>Missing our item #?</h3>
+      <p class="text">If the customer doesn't list Aamstrand's item #, you'll need to find our part # before entering the order (see <em>How to check prices</em> and <em>How to check items</em>; guides coming soon).</p>
+
+      <h3>Who checks the prices?</h3>
+      <p class="text">Each customer has their own pricing, so verify prices before entering. Who does that depends on the account's rep number.</p>
+      <div class="pair">
+        <div>
+          <h4>House accounts <span class="reps"><span class="rep">16</span><span class="rep">19</span><span class="rep">20</span></span></h4>
+          <p><strong>You</strong> need to verify the prices listed on the PO.</p>
+        </div>
+        <div>
+          <h4>Dedicated rep <span class="reps"><span class="rep">6</span><span class="rep">7</span><span class="rep">22</span><span class="rep">23</span></span></h4>
+          <p>Prices should already be checked by <strong>their rep</strong>.</p>
+        </div>
+      </div>
+
+      <label class="complete"><input type="checkbox" data-complete="verify"> I've finished stage 1</label>
+    </section>
+
+    <!-- ============ 2. ENTER ============ -->
+    <section class="section" id="enter" aria-labelledby="enter-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 2</span><span class="eyebrow">In QuickBooks</span></div>
+        <h2 id="enter-title">Enter the order</h2>
+        <p class="section__intro">We'll follow the Nassco PO (Fig. 1) all the way through.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">Open Sales Orders from the QuickBooks home screen</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-home-sales-orders.png" width="1228" height="758" alt="QuickBooks home page with the Sales Orders icon circled in the Customers section" loading="lazy" decoding="async"></button>
+            <figcaption>Sales Orders is in the <b>Customers</b> area of the home page.</figcaption>
+          </figure>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">You'll land on a blank Sales Order</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-sales-order-blank.png" width="1650" height="929" alt="Blank QuickBooks Sales Order screen" loading="lazy" decoding="async"></button>
+            <figcaption>The blank Sales Order screen.</figcaption>
+          </figure>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Check the template</p>
+          <p>The <span class="ui">Template</span> drop-down in the top right should say <span class="field">AAmstrand Sales Order</span>.</p>
+          <div class="callout callout--warn"><span class="callout__icon">Watch out</span><p><strong>MSC orders have their own template!</strong> Switch to it for any MSC order.</p></div>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Search for the customer in <span class="ui">Customer:Job</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-customer-job.png" width="862" height="133" alt="Customer:Job search field circled at the top of the Sales Order" loading="lazy" decoding="async"></button>
+          </figure>
+          <p>For existing customers, picking the name fills in:</p>
+          <ul>
+            <li>Terms</li><li>Due date</li><li>Rep</li><li>FOB</li><li>Ship Via</li><li>Name / Address</li>
+          </ul>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-autofill-nassco.png" width="638" height="230" alt="Nassco sales order auto-filled: S.O. number 27515, Nassco address, ship to JOHDEEWAT John Deere Waterloo, terms 2% 10 Net 30, rep 16, FOB Manteno IL, ship via Best Way" loading="lazy" decoding="async"></button>
+            <figcaption>Nassco auto-completes like this. Sales Order # <b>27515</b>, rep <b>16</b>, FOB <b>Manteno, IL</b>, Ship Via <b>Best Way</b>.</figcaption>
+          </figure>
+          <div class="callout callout--note"><span class="callout__icon">Good to know</span><p>Shipping locations are stored as a <strong>9-letter code</strong>: the 6-letter customer code plus the first 3 letters of the town. <span class="field">JOHDEEWAT</span> = <span class="field">JOHDEE</span> (John Deere) + <span class="field">WAT</span> (Waterloo).</p></div>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Pick the right <span class="ui">Ship To</span> location</p>
+          <p>If the customer ships to several locations, use the Ship To drop-down to choose the one on your PO. Check that the address matches.</p>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Check FOB and Ship Via</p>
+          <p>These are usually right by default. You'll typically only change them when a customer is shipping differently than usual. Use this table to check:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>FOB</th><th>Who pays freight</th><th>Ship Via</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Manteno, IL</strong></td><td>We pay the freight and charge the customer later. If the customer writes <strong>PREPAY AND ADD</strong>, they want us to pay and add it to their invoice.</td><td>“Best Way”, unless the customer has a default carrier or names one</td></tr>
+                <tr><td><strong>Collect / 3rd Party</strong></td><td>The customer arranges and pays for their own freight.</td><td>The carrier the customer named, or their default carrier if the PO doesn't say</td></tr>
+                <tr><td><strong>FFA</strong></td><td>We pay shipping and do <strong>not</strong> charge the customer.</td><td>“Best Way”, always</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout--tip"><span class="callout__icon">Tip</span><p>When in doubt, leave the shipping info as the default, or ask if it looks wrong. <strong>Be sure to ask questions!</strong></p></div>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Double-check every auto-filled field</p>
+          <p>Compare terms, due date, rep, FOB, Ship Via and both addresses against the PO.</p>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Enter the PO # in <span class="ui">P.O. No.</span></p>
+          <p>The format must match the format of the customer's previous orders. Not sure? See <a href="#po-format">How to check PO format</a>.</p>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Enter our item # in the <span class="ui">Item</span> column</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-line-item.png" width="648" height="124" alt="Item 18445III with description 5/32 SOLID BRAID NYL WHITE 500 FT SPOOL" loading="lazy" decoding="async"></button>
+          </figure>
+          <p>The description fills in automatically. Use it to double-check the item # against the PO.</p>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Enter the quantity in <span class="ui">Ordered</span> and the price in <span class="ui">Rate</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-qty-rate.png" width="519" height="147" alt="U/M EA, ordered 1, rate 11.99, bin 68A" loading="lazy" decoding="async"></button>
+            <figcaption>Nassco ordered <b>1 spool at 11.99 ea</b>. The line total in the <b>Amount</b> column calculates itself.</figcaption>
+          </figure>
+        </div></li>
+
+        <li class="step"><div class="step__body">
+          <p class="step__title">Repeat for each line item</p>
+          <p>Move on to the next line until every item on the PO is entered.</p>
+        </div></li>
+      </ol>
+
+      <h3>Does this order need special handling?</h3>
+      <p class="text">For many customers you're done entering. Check the order against these four cases:</p>
+      <div class="decide">
+        <div class="decide__row"><span>The order is under the <strong>minimum order amount</strong> ($200, or $50 for some companies)</span><a href="#case-minord">Minimum order fee →</a></div>
+        <div class="decide__row"><span>The order is being paid by <strong>credit card</strong></span><a href="#case-crecar">Credit cards →</a></div>
+        <div class="decide__row"><span>The order has <strong>special instructions</strong></span><a href="#case-instructions">Special instructions →</a></div>
+        <div class="decide__row"><span>The order includes <strong>customer part #s</strong></span><a href="#case-partnums">Customer part #s →</a></div>
+      </div>
+      <p class="text">None of these apply? Skip ahead to <a href="#finish">stage 4: Finish the order</a>.</p>
+
+      <label class="complete"><input type="checkbox" data-complete="enter"> I've finished stage 2</label>
+    </section>
+
+    <!-- ============ 3. SPECIAL CASES ============ -->
+    <section class="section" id="special" aria-labelledby="special-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 3</span><span class="eyebrow">Only if needed</span></div>
+        <h2 id="special-title">Special cases</h2>
+        <p class="section__intro">Extra lines, notes and paperwork marks for orders that need them.</p>
+      </div>
+
+      <div class="cases">
+        <article class="case" id="case-minord">
+          <div class="case__head"><h3>Minimum order fee</h3><span class="field">MINORD</span></div>
+          <p class="case__when">When the order total is under <strong>$200</strong>. Some frequent customers (MSC, McMaster-Carr, Fastenal, Wesco) have a <strong>$50</strong> minimum instead.</p>
+          <ol>
+            <li>In the <span class="ui">Item</span> column, enter <span class="field">MINORD</span>.</li>
+            <li>It fills in our minimum order charge of <strong>$25</strong> automatically.</li>
+          </ol>
+        </article>
+
+        <article class="case" id="case-crecar">
+          <div class="case__head"><h3>Credit card</h3><span class="field">CRECAR</span></div>
+          <p class="case__when">When the customer pays by card. Card payments carry a convenience fee, which we charge back to the customer.</p>
+          <ol>
+            <li>Calculate the fee by hand: <strong>order total × 0.025</strong> (2.5%).</li>
+            <li>In the <span class="ui">Item</span> column, enter <span class="field">CRECAR</span>, and put the fee in the <span class="ui">Rate</span> column.</li>
+            <li>Write <span class="redpen">C/C</span> in <strong>red</strong> at the top of the purchase order, and on the sales order after printing.</li>
+          </ol>
+        </article>
+
+        <article class="case" id="case-cia">
+          <div class="case__head"><h3>Cash in advance</h3><span class="field">CIA</span></div>
+          <p class="case__when">When the terms for this order are CIA.</p>
+          <ol>
+            <li>Write <span class="redpen">CIA</span> on both the purchase order and the sales order.</li>
+          </ol>
+        </article>
+
+        <article class="case" id="case-partnums">
+          <div class="case__head"><h3>Customer part #s</h3></div>
+          <p class="case__when">When a company lists its own part numbers, either alongside ours or on their own.</p>
+          <ol>
+            <li>Type their part # on the Sales Order, right after the description.</li>
+          </ol>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-customer-part-numbers.png" width="538" height="111" alt="Uline sales order lines with Uline item numbers such as S-15873 typed after each description" loading="lazy" decoding="async"></button>
+            <figcaption><b>Uline</b> asks for their item # (e.g. S-15873) on our paperwork.</figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <article class="case" id="case-instructions" style="max-width:var(--measure)">
+        <div class="case__head"><h3>Special instructions</h3></div>
+        <p class="case__when">Some examples you'll see:</p>
+        <ul>
+          <li>Include their customer's PO # on our paperwork</li>
+          <li>Ship after, before or on a certain date</li>
+          <li>Package the product a certain way (in or out of boxes, wooden spools only, etc.)</li>
+        </ul>
+        <p>Type the instructions in the empty space below the line items:</p>
+        <figure class="figure">
+          <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-special-instructions.png" width="846" height="141" alt="Sales order with a line below the item reading CONTACT ESTEX@WWEX.COM WITH SHIPMENT DETAILS" loading="lazy" decoding="async"></button>
+        </figure>
+        <p>For a <strong>customer's PO #</strong>, type it below the Ship To address so it's visible when shipping:</p>
+        <figure class="figure">
+          <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-cust-po-ship-to.png" width="312" height="133" alt="Ship To box ending with CUST PO# 8432555" loading="lazy" decoding="async"></button>
+          <figcaption>From the Nassco order: <b>CUST PO# 8432555</b>.</figcaption>
+        </figure>
+        <div class="callout callout--warn"><span class="callout__icon">Important</span><p>Special instructions must carry over to the <strong>printed</strong> sales order. Check for them when you print.</p></div>
+      </article>
+
+      <form class="tool" id="addons" autocomplete="off">
+        <div class="tool__head"><h3>Order add-on helper</h3><span class="small muted">Example values; change them to match your order</span></div>
+        <div class="tool__grid">
+          <label for="ad-total">Order total so far ($)<input id="ad-total" type="number" min="0" step="0.01" value="150.00" inputmode="decimal"></label>
+          <label for="ad-cust">Customer<select id="ad-cust">
+            <option value="200">Most customers ($200 minimum)</option>
+            <option value="50">MSC ($50 minimum)</option>
+            <option value="50">McMaster-Carr ($50 minimum)</option>
+            <option value="50">Fastenal ($50 minimum)</option>
+            <option value="50">Wesco ($50 minimum)</option>
+          </select></label>
+        </div>
+        <label class="check" for="ad-card"><input id="ad-card" type="checkbox" checked> Paying by credit card</label>
+        <div class="result" id="ad-result" aria-live="polite"></div>
+      </form>
+
+      <h3 id="marks">Paperwork marks</h3>
+      <p class="text">These handwritten marks tell everyone downstream what's special about an order. Write them on the PO when you enter it, then carry them over to the printed sales order.</p>
+      <div class="marks">
+        <div class="mark"><span class="mark__ink">C/C</span><h4>Credit card</h4><p>In <strong>red</strong>, top of the PO, and the SO after printing.</p></div>
+        <div class="mark"><span class="mark__ink">CIA</span><h4>Cash in advance</h4><p>On both the PO and the SO.</p></div>
+        <div class="mark"><span class="mark__ink">EC</span><h4>Exceeded credit limit</h4><p>Top of the SO (after printing) and the PO. QuickBooks warns you when you save.</p></div>
+        <div class="mark"><span class="mark__ink mark__ink--blue">27515</span><h4>Sales Order #</h4><p>Top of every PO once it's entered.</p></div>
+      </div>
+
+      <label class="complete"><input type="checkbox" data-complete="special"> I've finished stage 3</label>
+    </section>
+
+    <!-- ============ 4. FINISH ============ -->
+    <section class="section" id="finish" aria-labelledby="finish-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 4</span><span class="eyebrow">Save it</span></div>
+        <h2 id="finish-title">Finish the order</h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">Write the Sales Order # at the top of the PO</p>
+          <p>For the Nassco example, that's <span class="field">27515</span>.</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Do one final check, then click <span class="ui">Save &amp; New</span></p>
+          <p>Save &amp; New is in the bottom-right corner.</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">If a dialog box pops up, read it carefully</p>
+          <div class="pair">
+            <div>
+              <h4>“Credit limit exceeded”</h4>
+              <p>Write <span class="redpen">EC</span> at the top of the purchase order, and on the sales order after printing.</p>
+            </div>
+            <div>
+              <h4>“Change this information permanently?”</h4>
+              <p>This appears if you changed a customer's default info (Ship Via, FOB, Terms, etc.).</p>
+            </div>
+          </div>
+          <div class="callout callout--warn"><span class="callout__icon">Never</span><p><strong>Do not change a customer's defaults permanently without permission.</strong></p></div>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Enter the next PO</p>
+          <p>Save &amp; New gives you a fresh Sales Order. Go back to <a href="#verify">stage 1</a> with your next PO. When every PO is entered, move on to printing.</p>
+        </div></li>
+      </ol>
+
+      <label class="complete"><input type="checkbox" data-complete="finish"> I've finished stage 4</label>
+    </section>
+
+    <!-- ============ 5. PRINT ============ -->
+    <section class="section" id="print" aria-labelledby="print-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">STAGE 5</span><span class="eyebrow">Once all POs are entered</span></div>
+        <h2 id="print-title">Print &amp; hand off</h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">Find <span class="ui">Print</span> at the top of the screen</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-print-button.png" width="591" height="150" alt="Print button circled in the Sales Order toolbar" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Click the drop-down arrow and choose <span class="ui">Batch</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-print-batch.png" width="298" height="166" alt="Print drop-down menu showing Preview, Sales Order, Batch and Packing Slip" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Click <span class="ui">OK</span> on the list of sales orders you entered</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-select-to-print.png" width="693" height="246" alt="Select Sales Orders to Print window with one sales order checked and an OK button" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Click <span class="ui">Print</span></p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-print-dialog.png" width="654" height="259" alt="Print Sales Orders settings window with the Print button" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Carry over marks and instructions</p>
+          <p>Copy any special instructions and marks (<span class="redpen">C/C</span>, <span class="redpen">CIA</span>, <span class="redpen">EC</span>) from each PO onto its printed sales order.</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Match and staple</p>
+          <p>Match each printed <strong>Sales Order</strong> to its <strong>Purchase Order</strong> and staple the PO to the back.</p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Hand each Sales Order to its rep</p>
+          <p>The rep checks it for mistakes. House accounts are checked by <strong>Julie</strong>. That's it, you're done!</p>
+        </div></li>
+      </ol>
+
+      <label class="complete"><input type="checkbox" data-complete="print"> I've finished stage 5</label>
+    </section>
+
+    <!-- ============ A. PO FORMAT ============ -->
+    <section class="section" id="po-format" aria-labelledby="po-format-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">REF A</span><span class="eyebrow">Used in stage 2</span></div>
+        <h2 id="po-format-title">How to check PO format</h2>
+        <p class="section__intro">Look up a customer's past sales orders to see how their PO numbers were typed before.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><div class="step__body">
+          <p class="step__title">Open the <span class="ui">Customers</span> menu in the top bar</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-customers-menu.png" width="540" height="262" alt="Customers menu open with Customer Center at the top" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Choose <span class="ui">Customer Center</span></p>
+          <p class="small muted">Shortcut: <span class="field">Ctrl+J</span></p>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Search for the company in the search bar on the left</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-customer-search.png" width="380" height="179" alt="Customer Center search for Uline showing ULINE,INC in the list" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Set <span class="ui">Show</span> to <span class="ui">Sales Orders</span> on the Transactions tab</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-transactions-tab.png" width="540" height="206" alt="Transactions tab with Show set to Sales Orders circled" loading="lazy" decoding="async"></button>
+          </figure>
+        </div></li>
+        <li class="step"><div class="step__body">
+          <p class="step__title">Read the <span class="ui">P.O. Number</span> column</p>
+          <figure class="figure">
+            <button type="button" class="figure__frame" data-zoom><img src="assets/img/order-entry/qb-po-number-column.png" width="496" height="164" alt="P.O. Number column showing previous Uline PO numbers 300168458, 300164879 and 300164836" loading="lazy" decoding="async"></button>
+            <figcaption>Uline's previous POs are plain 9-digit numbers, so type new ones the same way.</figcaption>
+          </figure>
+        </div></li>
+      </ol>
+    </section>
+
+    <!-- ============ B. QUICK REFERENCE ============ -->
+    <section class="section" id="reference" aria-labelledby="ref-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">REF B</span><span class="eyebrow">Keep this handy</span></div>
+        <h2 id="ref-title">Quick reference</h2>
+      </div>
+      <div class="ref-grid">
+        <div class="ref">
+          <h3>Watch due dates</h3>
+          <ul><li>Marshalltown</li><li>Uline</li><li>Packaging Exchange</li><li>Watkins</li><li>Carver Industries / Covercraft</li><li>Fairborn</li></ul>
+        </div>
+        <div class="ref">
+          <h3>$50 minimum order</h3>
+          <ul><li>MSC</li><li>McMaster-Carr</li><li>Fastenal</li><li>Wesco</li></ul>
+          <p class="small muted">Everyone else: $200.</p>
+        </div>
+        <div class="ref">
+          <h3>Item codes</h3>
+          <ul style="list-style:none;padding:0">
+            <li><span class="field">MINORD</span> $25 minimum order fee</li>
+            <li><span class="field">CRECAR</span> 2.5% credit card fee</li>
+          </ul>
+        </div>
+        <div class="ref">
+          <h3>Rep numbers</h3>
+          <p class="small"><strong>House accounts</strong> (you verify prices; Julie checks the SO)</p>
+          <div class="reps"><span class="rep">16</span><span class="rep">19</span><span class="rep">20</span></div>
+          <p class="small"><strong>Dedicated reps</strong> (rep checks prices)</p>
+          <div class="reps"><span class="rep">6</span><span class="rep">7</span><span class="rep">22</span><span class="rep">23</span></div>
+        </div>
+      </div>
+
+      <h3>Glossary</h3>
+      <dl class="gloss">
+        <dt>PO</dt><dd>Purchase Order: the order document the customer sends us.</dd>
+        <dt>SO</dt><dd>Sales Order: what we create in QuickBooks from the PO.</dd>
+        <dt>FOB</dt><dd>Sets who pays freight: Manteno, IL; Collect/3rd Party; or FFA.</dd>
+        <dt>PPD/ADD</dt><dd>Prepay and add: we pay the freight and add it to the invoice.</dd>
+        <dt>UOM</dt><dd>Unit of measure: SP and EA (each spool), FT (per foot), CS (per case).</dd>
+        <dt>C/C</dt><dd>Credit card order. Written in red on the PO and SO.</dd>
+        <dt>CIA</dt><dd>Cash in advance terms. Written on the PO and SO.</dd>
+        <dt>EC</dt><dd>Exceeded credit limit. Written on the PO and SO.</dd>
+        <dt>Ship-to code</dt><dd>9 letters: 6-letter customer code + first 3 letters of the town.</dd>
+      </dl>
+    </section>
+
+    <!-- ============ C. QUIZ ============ -->
+    <section class="section quiz-section" id="quiz" aria-labelledby="quiz-title">
+      <div class="section__head">
+        <div class="section__kicker"><span class="stage-badge">REF C</span><span class="eyebrow">Check your understanding</span></div>
+        <h2 id="quiz-title">Knowledge check</h2>
+        <p class="section__intro">Pick an answer to see if you're right. Nothing is recorded.</p>
+      </div>
+      <form class="quiz" id="quiz-form" autocomplete="off"></form>
+      <div class="quiz__score"><span id="quiz-score" class="big" aria-live="polite"></span><button class="btn" type="button" id="quiz-reset">Start over</button></div>
+    </section>
+
+    <footer class="foot">
+      <span>Source: <em>Order Entry Procedure</em> (18-page training document).</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </main>
+</div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
+  <div class="lightbox__bar"><span id="lightbox-cap"></span><button class="lightbox__close" type="button" id="lightbox-close">Close</button></div>
+  <img id="lightbox-img" src="" alt="">
+</dialog>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/order-entry.js"></script>
+</body>
+</html>
